@@ -1,19 +1,10 @@
 # Python Virtual Environment
-    /backend/venv/
+/backend/venv/
 
 # Python cache
-    __pycache__/
-    *.pyc
-
-# Environment variables
-    .env
+__pycache__/
+*.pyc
 
 # IDE and editor folders
-    .vscode/
-    .idea/
-
-# Build artifacts
-    /build/
-    /dist/
-    *.egg-info/
-/backend/venv/
+.vscode/
+.idea/
