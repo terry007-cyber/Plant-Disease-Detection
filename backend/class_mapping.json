@@ -1,0 +1,23 @@
+{
+    "tomato": {
+      "0": "Tomato_Bacterial_spot",
+      "1": "Tomato_Early_blight",
+      "2": "Tomato_Late_blight",
+      "3": "Tomato_healthy"
+    },
+    "corn": {
+      "0": "Corn_Common_rust",
+      "1": "Corn_Gray_leaf_spot",
+      "2": "Corn_healthy"
+    },
+    "grape": {
+      "0": "Grape_Black_rot",
+      "1": "Grape_Esca",
+      "2": "Grape_healthy"
+    },
+    "potato": {
+      "0": "Potato_Early_blight",
+      "1": "Potato_Late_blight",
+      "2": "Potato_healthy"
+    }
+  }

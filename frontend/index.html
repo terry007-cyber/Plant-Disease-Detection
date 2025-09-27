@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>አረንጓዴ ተስፋ | AI Plant Disease Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-diagnoses"></i>
+                <span>🌱አረንጓዴ ተስፋ🌿</span>
+            </div>
+            <ul class="nav-menu">
+        <li class="active"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="scheduler.html"><i class="fas fa-calendar-check"></i> Care Scheduler</a></li>
+        <li><a href="encyclopedia.html"><i class="fas fa-book"></i> Encyclopedia</a></li>
+    </ul>
+    
+    <!-- Add the return button here -->
+    <a href="home.html" class="return-btn">
+        <i class="fas fa-arrow-left"></i>
+        Return to Intro
+    </a>
+            <div class="language-selector">
+    <select id="language-select">
+        <option value="en">English</option>
+        <option value="am">አማርኛ</option>
+        <option value="om">Afaan Oromoo</option>
+    </select>
+</div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+             <h1 data-translate="appTitle">Plant Disease Detection</h1>
+<p data-translate="appSubtitle">Upload images to diagnose plant diseases</p>
+            </header>
+
+            <div class="content-grid">
+                <!-- Analysis Panel -->
+                <section class="analysis-panel card">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-microscope"></i> New Analysis</h2>
+                        <div class="progress-steps">
+                            <div class="step active">1. Select Crop</div>
+                            <div class="step">2. Upload Image</div>
+                            <div class="step">3. Get Results</div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <!-- Crop Selection -->
+                        <div class="form-section" id="crop-selection">
+                            <h3>Select Plant Type</h3>
+                            <div class="crop-options">
+                                <div class="crop-card" data-crop="tomato">
+                                    <img src="assets/images/tomato.png" alt="Tomato">
+                                    <span>Tomato</span>
+                                </div>
+                                <div class="crop-card" data-crop="potato">
+                                    <img src="assets/images/potato.jpg" alt="Potato">
+                                    <span>Potato</span>
+                                </div>
+                                <div class="crop-card" data-crop="grape">
+                                    <img src="assets/images/grape.png" alt="Grape">
+                                    <span>Grape</span>
+                                </div>
+                                <div class="crop-card" data-crop="corn">
+                                    <img src="assets/images/corn.jpg" alt="Corn">
+                                    <span>Corn</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image Upload -->
+                        <div class="form-section hidden" id="image-upload">
+                            <h3>Upload Plant Image</h3>
+                            <div class="upload-container">
+                                <div class="upload-box" id="drop-zone">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <h4>Drag & Drop your image here</h4>
+                                    <p>Supports JPG, PNG (Max 5MB)</p>
+                                    <span class="divider">OR</span>
+                                    <button class="btn btn-primary" id="browse-btn">Browse Files</button>
+                                    <input type="file" id="file-input" accept="image/*">
+                                </div>
+                                <div class="image-preview hidden" id="preview-container">
+                                    <div class="preview-header">
+                                        <h4>Image Preview</h4>
+                                        <button class="btn btn-icon" id="remove-image">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <img id="image-preview" src="#" alt="Preview">
+                                    <div class="preview-footer">
+                                        <button class="btn btn-primary btn-block" id="analyze-btn">
+                                            <i class="fas fa-search"></i> Analyze Image
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results Section -->
+                        <div class="results-section hidden" id="results-section">
+                            <div class="results-header">
+                                <h3>Analysis Results</h3>
+                                <div class="confidence-meter">
+                                    <div class="confidence-fill" id="confidence-fill"></div>
+                                    <span id="confidence-value">0%</span>
+                                </div>
+                            </div>
+
+                            <div class="results-grid">
+                                <div class="result-card primary">
+                                    <div class="result-icon">
+                                        <i class="fas fa-diagnoses"></i>
+                                    </div>
+                                    <div class="result-content">
+                                        <h4>Diagnosis</h4>
+                                        <p id="disease-result">No disease detected</p>
+                                    </div>
+                                </div>
+
+                                <div class="result-card warning">
+                                    <div class="result-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="result-content">
+                                        <h4>Severity</h4>
+                                        <p id="severity-result">-</p>
+                                    </div>
+                                </div>
+
+                                <div class="result-card success">
+                                    <div class="result-icon">
+                                        <i class="fas fa-prescription-bottle-alt"></i>
+                                    </div>
+                                    <div class="result-content">
+                                        <h4>Treatment</h4>
+                                        <p id="treatment-result">-</p>
+                                    </div>
+                                </div>
+
+                                <div class="result-card info">
+                                    <div class="result-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="result-content">
+                                        <h4>Recovery Time</h4>
+                                        <p id="recovery-result">-</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- YouTube Treatment Videos -->
+                            <div class="video-section">
+                                <h4><i class="fab fa-youtube"></i> Recommended Treatment Videos</h4>
+                                <div class="video-grid" id="video-container">
+                                    <!-- Videos will be inserted here by JavaScript -->
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn btn-outline" id="save-report">
+                                    <i class="fas fa-file-pdf"></i> Save Report
+                                </button>
+                                <button class="btn btn-primary" id="new-analysis">
+                                    <i class="fas fa-redo"></i> New Analysis
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Information Panel -->
+                <section class="info-panel card">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-info-circle"></i> Disease Information</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="disease-info" id="disease-info">
+                            <div class="placeholder">
+                                <i class="fas fa-leaf"></i>
+                                <p>Select a crop and analyze an image to view detailed disease information</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h3>Analyzing Plant Image</h3>
+            <p>Our AI is examining your plant for signs of disease</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
+

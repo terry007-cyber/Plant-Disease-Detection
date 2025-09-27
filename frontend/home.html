@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tesfa Plant Disease Detection - Products</title>
+<style>
+  body,html {
+    margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+  }
+
+  #mainContent {
+    display: flex;
+    flex-direction: column;
+    min-height: 200vh;
+    background-image: url('https://images.stockcake.com/public/7/f/1/7f1a4baf-87f8-4350-8e28-ee328790bbc9_large/hope-takes-root-stockcake.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+  }
+  #mainContent::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+  }
+
+  header, footer {
+    background-color: rgba(39, 174, 96, 0.85);
+    color: #fff;
+  }
+
+  header {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    user-select: none;
+  }
+
+  header .title {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+  }
+  header .title .emoji {
+    font-size: 1.5rem;
+    margin: 0 0.3rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  nav button:hover,
+  nav button.active {
+    background-color: rgba(255,255,255,0.3);
+  }
+
+  main {
+    flex: 1;
+    width: 90%;
+    max-width: 900px;
+    margin: 1rem auto 3rem;
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+
+  section {
+    display: none;
+    margin-bottom: 2rem;
+  }
+  section.active {
+    display: block;
+  }
+  h2 {
+    color: #a8e6a1;
+    border-bottom: 3px solid #a8e6a1;
+    padding-bottom: 0.3rem;
+  }
+  p {
+    line-height: 1.6;
+  }
+  .language-select {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    border: none;
+    background-color: white;
+  }
+  .btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    margin: 0.5rem 0;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn:hover {
+    background-color: #219150;
+  }
+  footer {
+    background-color: rgba(224,234,241,0.85);
+    color: #274c15;
+    text-align: right;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.7);
+    margin-top: auto;
+  }
+
+  /* Product Section Styles */
+  .product-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+  }
+  .product-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .product-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+  .product-title {
+    font-size: 1.5rem;
+    color: #a8e6a1;
+    margin: 0;
+  }
+  .product-description {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Flag Styles */
+  .flag {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .flag-us {
+    background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/flags/4x3/us.svg');
+  }
+  .flag-et {
+    background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/flags/4x3/et.svg');
+  }
+  .language-option {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Language specific styles */
+  .lang-am {
+    display: none;
+  }
+  .lang-en {
+    display: inline;
+  }
+  body.amharic .lang-am {
+    display: inline;
+  }
+  body.amharic .lang-en {
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <div id="mainContent">
+    <header>
+      <div class="title">
+        <span class="emoji">🌱</span>
+        <span class="lang-en">Green Hope</span>
+        <span class="lang-am">አረንጓዴ ተስፋ</span>
+        <span class="emoji">🌿</span>
+      </div>
+      <nav>
+        <button id="nav-products" class="active" aria-controls="products" aria-selected="true">
+          <span class="lang-en">Products</span>
+          <span class="lang-am">ምርቶች</span>
+        </button>
+        <button id="nav-about" aria-controls="about-us" aria-selected="false">
+          <span class="lang-en">About Us</span>
+          <span class="lang-am">ስለ እኛ</span>
+        </button>
+        <button id="nav-contact" aria-controls="contact-us" aria-selected="false">
+          <span class="lang-en">Contact Us</span>
+          <span class="lang-am">አግኙን</span>
+        </button>
+        <button id="nav-language" aria-controls="language" aria-selected="false">
+          <span class="lang-en">Language</span>
+          <span class="lang-am">ቋንቋ</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="products" class="active" tabindex="0" role="region" aria-labelledby="nav-products">
+        <h2>
+          <span class="lang-en">Our Products & Services</span>
+          <span class="lang-am">የእኛ ምርቶች እና አገልግሎቶች</span>
+        </h2>
+        
+        <div class="product-section">
+          <div class="product-header">
+            <div class="product-icon">🔍</div>
+            <h3 class="product-title">
+              <span class="lang-en">Disease Detection</span>
+              <span class="lang-am">የበሽታ መለየት</span>
+            </h3>
+          </div>
+          <p class="product-description">
+            <span class="lang-en">Our advanced AI-powered system helps you identify plant diseases quickly and accurately. Simply upload a photo of your plant and receive instant diagnosis and treatment recommendations.</span>
+            <span class="lang-am">የእኛ የላቀ የአርቴፊሻል ኢንተለጀንስ የሚገዛ ስርዓት የአትክልት በሽታዎችን በፍጥነት እና በትክክል እንዲለዩ ይረዳዎታል። የአትክልትዎን ፎቶ ይጫኑ እና ወዲያውኑ የበሽታ ምርመራ እና የሕክምና ምክሮችን ይቀበሉ።</span>
+          </p>
+          <a href="index.html" class="btn">
+            <span class="lang-en">Try Disease Detection</span>
+            <span class="lang-am">የበሽታ መለየትን ይሞክሩ</span>
+          </a>
+        </div>
+        
+        <div class="product-section">
+          <div class="product-header">
+            <div class="product-icon">📚</div>
+            <h3 class="product-title">
+              <span class="lang-en">Recommendation Books</span>
+              <span class="lang-am">የምክር መጽሐፍት</span>
+            </h3>
+          </div>
+          <p class="product-description">
+            <span class="lang-en">Access our comprehensive library of plant care guides and disease prevention manuals. Learn expert techniques to keep your plants healthy and productive.</span>
+            <span class="lang-am">የአትክልት ጥበቃ መመሪያዎች እና የበሽታ መከላከያ መመሪያ መጽሐፍት ያሉትን የእኛ ሙሉ ቤተ መጽሐፍት ይድረሱት። አትክልቶችዎን ጤናማ እና ምርታማ ለማድረግ የባለሙያ ቴክኒኮችን ይማሩ።</span>
+          </p>
+          <a href="bSection.html" class="btn">
+            <span class="lang-en">Browse Books</span>
+            <span class="lang-am">መጽሐፍትን ይመልከቱ</span>
+          </a>
+        </div>
+        
+        <div class="product-section">
+          <div class="product-header">
+            <div class="product-icon">🎥</div>
+            <h3 class="product-title">
+              <span class="lang-en">Treatment Tutorials</span>
+              <span class="lang-am">የሕክምና ትምህርቶች</span>
+            </h3>
+          </div>
+          <p class="product-description">
+            <span class="lang-en">Step-by-step video tutorials showing exactly how to treat common plant diseases. Our easy-to-follow guides help you take immediate action to save your plants.</span>
+            <span class="lang-am">የተለመዱ የአትክልት በሽታዎችን እንዴት ማከም እንደሚቻል የሚያሳዩ ደረጃ በደረጃ የቪዲዮ ትምህርቶች። ለመከተል ቀላል የሆኑት መመሪያዎቻችን አትክልቶችዎን ለማዳን ወዲያውኑ እርምጃ እንድትወስዱ ይረዱዎታል።</span>
+          </p>
+          <a href="vSection.html" class="btn">
+            <span class="lang-en">Watch Tutorials</span>
+            <span class="lang-am">ትምህርቶችን ይመልከቱ</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="about-us" tabindex="0" role="region" aria-labelledby="nav-about">
+        <h2>
+          <span class="lang-en">About Us</span>
+          <span class="lang-am">ስለ እኛ</span>
+        </h2>
+        <p>
+          <span class="lang-en">Welcome to Tesfa Plant Disease Detection, your reliable partner in protecting your plants against diseases. Our mission is to empower farmers and gardeners with easy-to-use tools to detect plant diseases early and keep their crops healthy.</span>
+          <span class="lang-am">ወደ አረንጓዴ ተስፋ የአትክልት በሽታ መለያ በደህና መጡ፣ አትክልቶችዎን ከበሽታዎች ለመጠበቅ አስተማማኝ አጋርዎ። ተልእኳችን አርሶ አደሮችን እና አትክልት አብቃዮችን የአትክልት በሽታዎችን በፍጥነት ለመለየት እና እርሻዎቻቸውን ጤናማ ለማድረግ ቀላል የሆኑ መሳሪያዎችን በመስጠት ኃይል መስጠት ነው።</span>
+        </p>
+      </section>
+
+      <section id="contact-us" tabindex="0" role="region" aria-labelledby="nav-contact">
+        <h2>
+          <span class="lang-en">Contact Us</span>
+          <span class="lang-am">አግኙን</span>
+        </h2>
+        <p>
+          <span class="lang-en">If you have any questions or feedback, please reach out to us:</span>
+          <span class="lang-am">ማንኛውም ጥያቄ ወይም አስተያየት ካለዎት እባክዎን ያግኙን።</span>
+        </p>
+        <p>Email: support@tesfaplantdisease.com</p>
+        <p>
+          <span class="lang-en">Phone: +251 123 456 789</span>
+          <span class="lang-am">ስልክ: +251 123 456 789</span>
+        </p>
+        <p>
+          <span class="lang-en">Address: 123 Green Hope Street, Addis Ababa, Ethiopia</span>
+          <span class="lang-am">አድራሻ: 123 አረንጓዴ ተስፋ መንገድ, አዲስ አበባ, ኢትዮጵያ</span>
+        </p>
+      </section>
+
+      <section id="language" tabindex="0" role="region" aria-labelledby="nav-language">
+        <h2>
+          <span class="lang-en">Language</span>
+          <span class="lang-am">ቋንቋ</span>
+        </h2>
+        <p>
+          <span class="lang-en">Select your preferred language:</span>
+          <span class="lang-am">የሚፈልጉትን ቋንቋ ይምረጡ:</span>
+        </p>
+        <select class="language-select" aria-label="Select language" id="languageSelector">
+          <option value="en" selected>
+            <span class="language-option">
+              <span class="flag flag-us"></span>
+              <span class="lang-en">English</span>
+              <span class="lang-am">እንግሊዝኛ</span>
+            </span>
+          </option>
+          <option value="am">
+            <span class="language-option">
+              <span class="flag flag-et"></span>
+              <span class="lang-en">Amharic</span>
+              <span class="lang-am">አማርኛ</span>
+            </span>
+          </option>
+        </select>
+      </section>
+
+      <section id="login" tabindex="0" role="region" aria-labelledby="nav-login">
+        <h2>
+          <span class="lang-en">Login</span>
+          <span class="lang-am">ግባ</span>
+        </h2>
+        <p>
+          <span class="lang-en">Please enter your credentials to login.</span>
+          <span class="lang-am">እባክዎ ለመግባት የተጠቃሚ ስምዎን እና የይለፍ ቃልዎን ያስገቡ።</span>
+        </p>
+        <form id="login-form" onsubmit="return false;">
+          <label for="username">
+            <span class="lang-en">Username</span>
+            <span class="lang-am">የተጠቃሚ ስም</span>
+          </label>
+          <input type="text" id="username" name="username" required />
+          <label for="password">
+            <span class="lang-en">Password</span>
+            <span class="lang-am">የይለፍ ቃል</span>
+          </label>
+          <input type="password" id="password" name="password" required />
+          <button type="submit" class="btn">
+            <span class="lang-en">Login</span>
+            <span class="lang-am">ግባ</span>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <span class="lang-en">© 2025 Tesfa Plant Disease Detection System</span>
+      <span class="lang-am">© 2025 የአረንጓዴ ተስፋ የአትክልት በሽታ መለያ ስርዓት</span>
+    </footer>
+  </div>
+
+<script>
+  // Navigation tabs
+  const navButtons = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main section');
+
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      navButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      sections.forEach(section => section.classList.remove('active'));
+
+      button.classList.add('active');
+      button.setAttribute('aria-selected', 'true');
+
+      const sectionId = button.getAttribute('aria-controls');
+      document.getElementById(sectionId).classList.add('active');
+    });
+  });
+
+  // Login form placeholder
+  document.getElementById('login-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const lang = document.body.classList.contains('amharic') ? 'am' : 'en';
+    const message = {
+      en: 'Login functionality not implemented yet.',
+      am: 'የግባት አሰራር እስካሁን አልተጠናቀቀም።'
+    };
+    alert(message[lang]);
+  });
+
+  // Language selector functionality
+  const languageSelector = document.getElementById('languageSelector');
+  languageSelector.addEventListener('change', function() {
+    if (this.value === 'am') {
+      document.body.classList.add('amharic');
+      document.body.lang = 'am';
+    } else {
+      document.body.classList.remove('amharic');
+      document.body.lang = 'en';
+    }
+    
+    // Update the active section to reflect language change
+    const activeSection = document.querySelector('section.active');
+    if (activeSection) {
+      activeSection.focus();
+    }
+  });
+
+  // Set initial language based on browser preference
+  if (navigator.language.startsWith('am')) {
+    languageSelector.value = 'am';
+    languageSelector.dispatchEvent(new Event('change'));
+  }
+</script>
+</body>
+</html>

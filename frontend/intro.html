@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tesfa Plant Disease Detection - Welcome</title>
+<style>
+    body,html {
+        margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+    }
+    #landing {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        z-index: 10000;
+        transition: opacity 0.7s ease;
+        background-image: url('https://media.istockphoto.com/id/1389516541/photo/young-african-mother-crossing-tea-plantation-with-her-baby-central-ethiopia-africa.jpg?s=612x612&w=0&k=20&c=diYu5fTKTRkmphit_iZgjWsWOXMiIndSas-sXi-ErGE=');
+        background-size: cover;
+        background-position: center;
+    }
+    #landing::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: -1;
+    }
+    #landing h1 {
+        font-size: 3rem;
+        margin: 0 0 0.5rem;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+    #landing p {
+        font-size: 1.3rem;
+        max-width: 600px;
+        margin: 0 0 2rem;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+    #enterBtn {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        background-color: #27ae60;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        user-select: none;
+        color: white;
+        box-shadow: 0 5px 15px rgba(39,174,96,0.7);
+        transition: background-color 0.3s ease;
+        z-index: 1;
+    }
+    #enterBtn:hover {
+        background-color: #219150;
+    }
+    .lang-am { display: none; }
+    .lang-en { display: inline; }
+    body.amharic .lang-am { display: inline; }
+    body.amharic .lang-en { display: none; }
+</style>
+</head>
+<body>
+    <div id="landing" role="dialog" aria-modal="true" aria-label="Welcome screen with objective">
+        <h1>
+            <span class="lang-en">Welcome to አረንጓዴ ተስፋ</span>
+            <span class="lang-am">እንኳን ወደ አረንጓዴ ተስፋ በደህና መጡ</span>
+        </h1>
+        <p>
+            <span class="lang-en">Our objective is to empower farmers and gardeners by providing advanced plant disease detection, recommendations, and treatment resources to protect and nurture your crops for a healthier future.</span>
+            <span class="lang-am">የእኛ ዓላማ አርሶ አደሮችን እና አትክልት አብቃዮችን የአትክልት በሽታ መለየት፣ ምክሮች እና ሕክምና ሀብቶችን በማቅረብ ለበለጠ ጤናማ የወደፊት ጊዜ እርሻዎችዎን ለመጠበቅ እና ለማሳደግ ማብቃት ነው።</span>
+        </p>
+        <button id="enterBtn" aria-label="Enter site">
+            <span class="lang-en">Enter Site</span>
+            <span class="lang-am">ገብተው ይጀምሩ</span>
+        </button>
+    </div>
+<script>
+    // Redirect to home page on Enter button click
+    document.getElementById('enterBtn').onclick = function() {
+        window.location.href = 'home.html';
+    };
+    // Redirect to home page on Enter key press
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            window.location.href = 'home.html';
+        }
+    });
+    // Set initial language based on browser preference
+    if (navigator.language.startsWith('am')) {
+        document.body.classList.add('amharic');
+        document.body.lang = 'am';
+    }
+</script>
+</body>
+</html>

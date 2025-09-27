@@ -1,0 +1,23 @@
+{
+    "tomato": {
+      "Bacterial_spot": "Apply copper-based fungicides weekly",
+      "Early_blight": "Use chlorothalonil every 7-10 days",
+      "Late_blight": "Remove infected plants immediately",
+      "healthy": "No treatment needed"
+    },
+    "corn": {
+      "Common_rust": "Apply fungicide at first sign",
+      "Gray_leaf_spot": "Rotate crops and till debris",
+      "healthy": "No issues detected"
+    },
+    "grape": {
+      "Black_rot": "Apply fungicides pre-bloom",
+      "Esca": "Prune infected wood",
+      "healthy": "Vines are healthy"
+    },
+    "potato": {
+      "Early_blight": "Apply copper fungicides",
+      "Late_blight": "Destroy infected tubers",
+      "healthy": "Crop is healthy"
+    }
+  }

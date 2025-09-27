@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>አረንጓዴ ተስፋ | Encyclopedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>🌱አረንጓዴ ተስፋ🌿</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="scheduler.html"><i class="fas fa-calendar-check"></i> Care Scheduler</a></li>
+                <li class="active"><a href="encyclopedia.html"><i class="fas fa-book"></i> Encyclopedia</a></li>
+                
+            </ul>
+             <a href="intro3.html" class="return-btn">
+        <i class="fas fa-arrow-left"></i>
+        Return to Intro
+    </a>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="am">አማርኛ</option>
+                    <option value="om">Afaan Oromoo</option>
+                </select>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Plant Disease Encyclopedia</h1>
+                <p>Comprehensive information about common plant diseases</p>
+            </header>
+ <div class="encyclopedia-actions">
+                <div class="search-filter">
+                    <input type="text" placeholder="Search diseases..." id="encyclopedia-search">
+                    <select id="encyclopedia-filter">
+                        <option value="all">All Plants</option>
+                        <option value="tomato">Tomato</option>
+                        <option value="potato">Potato</option>
+                        <option value="grape">Grape</option>
+                        <option value="corn">Corn</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="encyclopedia-grid">
+                <!-- Example entry with online images -->
+                <div class="encyclopedia-card">
+                    <div class="encyclopedia-header">
+                        <h3>Tomato - Late Blight</h3>
+                    </div>
+                    <div class="encyclopedia-content">
+                        <div class="disease-description">
+                            Late blight is a devastating disease of tomatoes caused by the water mold Phytophthora infestans.
+                        </div>
+                        <div class="disease-symptoms">
+                            <h4>Symptoms:</h4>
+                            <ul>
+                                <li>Dark, water-soaked lesions on leaves</li>
+                                <li>White fungal growth under leaves</li>
+                                <li>Brown lesions on fruit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="encyclopedia-thumbnail">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Tomato_late_blight.jpg" alt="Tomato Late Blight">
+                             alt="Tomato Late Blight">
+                    </div>
+                </div>
+
+                <!-- Add more entries with online images following the same pattern -->
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts2.js"></script>
+</body>
+</html>

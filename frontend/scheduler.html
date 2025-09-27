@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhytoVision | Care Scheduler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <<nav class="sidebar">
+    <div class="logo">
+        <i class="fas fa-calendar-check"></i>
+        <span>🌱አረንጓዴ ተስፋ🌿 </span>
+    </div>
+    <ul class="nav-menu">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="scheduler.html"><i class="fas fa-calendar-check"></i> Care Scheduler</a></li>
+        <li><a href="encyclopedia.html"><i class="fas fa-book"></i> Encyclopedia</a></li>
+    </ul>
+     <a href="intro3.html" class="return-btn">
+        <i class="fas fa-arrow-left"></i>
+        Return to Intro
+    </a>
+    <div class="language-selector">
+        <select id="language-select">
+            <option value="en">English</option>
+            <option value="am">አማርኛ</option>
+            <option value="om">Afaan Oromoo</option>
+        </select>
+    </div>
+</nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Plant Care Scheduler</h1>
+                <p>Schedule treatments and maintenance for your plants</p>
+            </header>
+
+            <div class="scheduler-container">
+                <div class="add-reminder card">
+                    <h2><i class="fas fa-plus-circle"></i> Add New Reminder</h2>
+                    <form id="reminder-form">
+                        <div class="form-group">
+                            <label for="plant-type">Plant Type</label>
+                            <select id="plant-type" required>
+                                <option value="">Select plant</option>
+                                <option value="tomato">Tomato</option>
+                                <option value="potato">Potato</option>
+                                <option value="grape">Grape</option>
+                                <option value="corn">Corn</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="treatment-type">Treatment Type</label>
+                            <select id="treatment-type" required>
+                                <option value="">Select treatment</option>
+                                <option value="watering">Watering</option>
+                                <option value="fertilizing">Fertilizing</option>
+                                <option value="pruning">Pruning</option>
+                                <option value="pest_control">Pest Control</option>
+                                <option value="fungicide">Fungicide Application</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reminder-date">Date</label>
+                            <input type="date" id="reminder-date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reminder-time">Time</label>
+                            <input type="time" id="reminder-time" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reminder-notes">Notes</label>
+                            <textarea id="reminder-notes" rows="3"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Reminder
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="reminders-list card">
+                    <h2><i class="fas fa-bell"></i> Upcoming Reminders</h2>
+                    <div class="reminders-grid" id="reminders-container">
+                        <!-- Reminders will be added here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scheduler.js"></script>
+</body>
+</html>
